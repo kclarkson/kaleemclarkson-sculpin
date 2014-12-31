@@ -1,0 +1,45 @@
+
+{% extends "default" %}
+{% block content_wrapper %}
+    <article>
+        <header>
+            <h2>{{ page.title }} <small>project</small></h2>
+        </header>
+        {% if page.logos %}
+       <div class="image-header-projects">
+            <img src="{{ site.url }}/{{ page.logos }}"></div>
+        {% endif %}
+        <div> 
+            {{ page.blocks.content|raw }}
+        </div>
+     <!--   {% if page.categories %}
+            <p class="categories">
+            Categories:
+            {% for category in page.categories %}
+            <a href="{{ site.url }}/blog/categories/{{ category|url_encode(true) }}">{{ category }}</a>{% if not loop.last %}, {% endif %}
+            {% endfor %}
+            </p>
+        {% endif %}
+        {% if page.tags %}
+            <p class="tags">
+            Tags:
+            {% for tag in page.tags %}
+            <a href="{{ site.url }}/blog/tags/{{ tag|url_encode(true) }}">{{ tag }}</a>{% if not loop.last %}, {% endif %}
+            {% endfor %}
+            </p>
+        {% endif %} -->
+
+        {% if page.previous_project or page.next_project %}
+            <nav class="article">
+                <ul>
+                    {% if page.next_project %}
+                        <li>Next: <a class="next" href="{{ site.url }}{{ page.next_project.url }}" title="{{ page.next_project.title }}"><span class="title">{{ page.next_project.title }}</span></a></li>
+                    {% endif %}
+                    {% if page.previous_project %}
+                        <li>Previous: <a class="previous" href="{{ site.url }}{{ page.previous_project.url }}" title="{{ page.previous_project.title }}"><span class="title">{{ page.previous_project.title }}</span></a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        {% endif %}
+    </article>
+{% endblock %}

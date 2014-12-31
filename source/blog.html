@@ -1,0 +1,59 @@
+---
+layout: default
+title: Blog
+generator: pagination
+pagination:
+    max_per_page: 4
+    provider: data.posts
+use:
+    - posts
+---
+{% use "dateicon" %}
+
+{% block content %}
+<h1>Blog</h1>
+
+ {% for post in page.pagination.items %}
+<header>
+        <h2>
+        {% block dateicon %} 
+            {{ parent() }}
+        {% endblock %}
+            <a href="{{ site.url }}{{ post.url }}" class="post-title">{{ post.title }}</a>
+        </h2>
+</header>
+    <div class="article-content">
+        {% if post.draft == true %}
+            <h3>*** this is a draft ***</h3>
+        {% endif %}
+          <div>
+            {% set summary_array = 
+                post.blocks.content
+                  |raw
+                  |striptags
+                  |split(' ') 
+            %}
+            {{ summary_array|slice(0,50)|join(' ') }}...
+
+            <p>
+                <a href="{{ site.url }}{{ post.url }}" class="btn btn-primary">
+                    view post &raquo;
+                </a>
+            </p>
+        </div>
+    </div>
+    {% endfor %}
+
+<div class="pagers">
+{% if page.pagination.previous_page or page.pagination.next_page %}
+    <nav class="article clearfix">
+    {% if page.pagination.previous_page %}
+    <a class="previous" href="{{ site.url }}{{ page.pagination.previous_page.url }}" title="Previous Page"><span class="pager page-prev">Previous Page</span></a>
+    {% endif %}
+    {% if page.pagination.next_page %}
+    <a class="next" href="{{ site.url }}{{ page.pagination.next_page.url }}" title="Next Page"><span class="pager page-next">Next Page</span></a>
+    {% endif %}
+    </nav>
+{% endif %}
+</div>
+{% endblock %}

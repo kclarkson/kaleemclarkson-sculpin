@@ -1,0 +1,59 @@
+---
+layout: default
+title: Projects
+generator: pagination
+pagination:
+    max_per_page: 5
+    provider: data.projects
+use:
+    - projects
+---
+{% block content %}
+<h1>Projects</h1>
+    <div class="project-teaser">
+        <ul>
+            {% for project in page.pagination.items %}
+                <li>
+                    {% if project.logos %}
+                        <a href="{{ site.url }}{{ project.url }}">
+                            <div class="project-image-header">
+                                <img src="{{ site.url }}/{{ project.logos }}">
+                            </div>
+                        </a>
+                    {% endif %}
+
+                    <a href="{{ site.url }}{{ project.url }}" class="project-title-teaser">{{ project.title }}</a>
+                	
+                    <div class="project-teaser-text">
+                        {% set summary_array = 
+                            project.blocks.content
+                              |raw
+                              |striptags
+                              |split(' ') 
+                        %}
+                        {{ summary_array|slice(0,50)|join(' ') }}...
+                        <p>
+                            <a href="{{ site.url }}{{ project.url }}" class="btn btn-primary">
+                                view project &raquo;
+                            </a>
+                        </p>
+                    </div>   
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+<div>
+{% if page.pagination.previous_page or page.pagination.next_page %}
+    <nav class="article clearfix">
+    {% if page.pagination.previous_page %}
+    <a class="previous" href="{{ site.url }}{{ page.pagination.previous_page.url }}" title="Previous Page"><span class="title">Previous Page</span></a>
+    {% endif %}
+    {% if page.pagination.next_page %}
+    <a class="next" href="{{ site.url }}{{ page.pagination.next_page.url }}" title="Next Page"><span class="title">Next Page</span></a>
+    {% endif %}
+    </nav>
+{% endif %}
+</div>
+
+{% endblock %}

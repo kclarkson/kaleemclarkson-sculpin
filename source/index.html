@@ -1,0 +1,82 @@
+---
+layout: default
+generator: pagination
+pagination:
+    max_per_page: 2   
+---
+{% use "dateicon" %}
+{% block content %}
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class= "content jumbotron">
+    <h1>my name is <br>Kaleem Clarkson</h1>
+    <p>I am a husband, father, front-end web developer, designer, Drupal evangelist and entreprenuer from Bangor, Maine. Yes the home of Stephen King and Paul Bunyan. I hope you enjoy my projects and find my thoughts useful.</p>
+    <p><a href ="/about" class="btn btn-primary btn-lg" role="button">learn more</a></p>
+</div>
+
+
+<!-- RECENT PROJECTS  -->
+<header>
+    <h1>Recent Projects</h1>
+</header>
+<article>
+<div class="recent-projects">
+    <div class="project-one col-md-6">
+        <a href="{{site.url}}/project/2014/10/04/drupalcamp-atlanta"><img src="{{ site.url}}/images/projects/2014drupalcampatlanta.png"></a>
+        <div class="project-title">
+            <a href="{{site.url}}/project/2014/10/04/drupalcamp-atlanta">Drupalcamp Atlanta</a>
+        </div>
+    </div>
+    <div class="project-two col-md-6">
+        <a href="{{site.url}}/project/2013/12/01/belton-construction"><img src="{{ site.url}}/images/projects/beltonconstruction.png"></a>
+        <div class="project-title">
+            <a href="{{site.url}}/project/2013/12/01/belton-construction">Belton Construction</a>
+        </div>   
+    </div>
+    <p>
+        <a href="{{ site.url }}/projects" class="btn-view-all btn btn-primary">
+            view all projects &raquo;
+        </a>
+    </p>
+</div>
+</article>
+
+<!--- BLOG POSTS -->    
+<header>
+    <h1>Blog Posts</h1>
+</header>
+	{% for post in page.pagination.items %}
+    <article class="hm-posts col-md-6" >
+        <header>
+        <h2>
+        {% block dateicon %} 
+            {{ parent() }}
+        {% endblock %}
+            <a href="{{ site.url }}{{ post.url }}" class="post-title">{{ post.title }}</a>
+        </h2>
+        </header>
+        <div class="article-content">
+            {% if post.draft == true %}
+                <h3>*** this is a draft ***</h3>
+            {% endif %}
+
+            <div>
+                {% set summary_array = 
+                    post.blocks.content
+                      |raw
+                      |striptags
+                      |split(' ') 
+                %}
+    				{{ summary_array|slice(0,50)|join(' ') }}...
+    			<p>
+    			    <a href="{{ site.url }}{{ post.url }}" class="btn btn-primary">
+    			        read more &raquo;
+    			    </a>
+    			</p>
+        	</div>
+        </div>
+   	</article>
+
+	{% endfor %}
+
+{% endblock %}
+
