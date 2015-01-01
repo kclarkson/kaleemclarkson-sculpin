@@ -2,7 +2,7 @@
 ---
 title: Riverside Disposal
 logos:
-    images/projects/riversidedisposal.png
+    images/projects/riversidedisposal.jpg
 categories:
     - features
 ---

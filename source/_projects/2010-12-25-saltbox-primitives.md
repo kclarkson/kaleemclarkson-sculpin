@@ -1,7 +1,7 @@
 ---
 title: Saltbox Primitives
 logos:
-    images/projects/saltboxprimitives.png
+    images/projects/saltboxprimitives.jpg
 categories:
     - personal
 

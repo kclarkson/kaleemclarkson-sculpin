@@ -1,7 +1,7 @@
 ---
 title: Chalkart Creations
 logos:
-    images/projects/chalkartcreations.png
+    images/projects/chalkartcreations.jpg
 categories: [personal]
 
 ---

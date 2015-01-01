@@ -6,7 +6,7 @@ title: About Me
 # About Me
 
 <div class="image-header">
-	<img src="{{ site.url }}/images/posts/2013.clarksons.symposium.png">
+	<img src="{{ site.url }}/images/posts/2013.clarksons.symposium.jpg">
 </div>
 <h3>Personal Life</h3>
 My name is <b>Kaleem Clarkson</b> and I am a husband, father, front-end web developer, designer, Drupal evangelist and entreprenuer from Bangor, Maine who currently calls Atlanta home. 

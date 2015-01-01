@@ -1,7 +1,7 @@
 ---
 title: Gracious Gatherings
 logos:
-    images/projects/graciousgatherings.png
+    images/projects/graciousgatherings.jpg
 tags: [balrog, community, static site generator]
 categories: [personal]
 

@@ -1,13 +1,11 @@
 ---
-use: [posts_tags]
-permalink: drupal2.rss
+generator: [posts_category_index]
 
 ---
-
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title><![CDATA[{{ site.title }}]]></title>
-    <link href="{{ site.url }}/atom.xml" rel="self"/>
+    <link href="{{ site.url }}{{ page.url }}" rel="self"/>
     <link href="{{ site.url }}/"/>
     <updated>{{ site.calculated_date | date('c') }}</updated>
     <id>{{ site.url }}/</id>
@@ -18,23 +16,13 @@ permalink: drupal2.rss
         </author>
     {% endif %}
     <generator uri="http://sculpin.io/">Sculpin</generator>
-
-
-
-    {% for tag,posts in data.posts_tags %}
-        
-        
-            <entry>
-                
-                {{ tag }}
-                <title type="html"><![CDATA[{{ post.title }}]]></title>
-                <link href="{{ site.url }}{{ post.url }}"/>
-                <updated>{{ post.date|date('c') }}</updated>
-                <id>{{ site.url }}{{ post.url }}</id>
-                <content type="html"><![CDATA[{{ post.blocks.content|raw }}]]></content>
-
-            </entry>
-         
+    {% for post in page.category_posts|slice(0, 10) %}
+        <entry>
+            <title type="html"><![CDATA[{{ post.title }}]]></title>
+            <link href="{{ site.url }}{{ post.url }}"/>
+            <updated>{{ post.date|date('c') }}</updated>
+            <id>{{ site.url }}{{ post.url }}</id>
+            <content type="html"><![CDATA[{{ post.blocks.content|raw }}]]></content>
+        </entry>
     {% endfor %}
 </feed>
-
