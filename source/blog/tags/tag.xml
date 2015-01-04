@@ -8,7 +8,7 @@ generator: [posts_tag_index]
     <link href="{{ site.url }}{{ page.url }}" rel="self"/>
     <link href="{{ site.url }}/"/>
     <updated>{{ site.calculated_date | date('c') }}</updated>
-    <id>{{ site.url }}/</id>
+    <id>{{ site.url }}{{ page.url }}</id>
     {% if site.author or site.email %}
         <author>
             {% if site.author %}<name><![CDATA[{{ site.author }}]]></name>{% endif %}

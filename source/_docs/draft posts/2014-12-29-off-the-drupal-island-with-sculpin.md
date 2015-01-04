@@ -6,7 +6,9 @@ tags:
 categories:
     - front end
     - drupal
-draft:	true
+
+logos:
+    images/posts/drupal.island.jpg
 ---
 As a Drupal evangelist I am usually the person in the room that says "it can be done in Drupal, lets just figure it out." After taking the red pill and entering the Druprix it can be very difficult to stop your client work and step off the Drupal Island to once again become a newb.  
 
